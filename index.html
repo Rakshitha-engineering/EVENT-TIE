@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Event Scheduler</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var maxLength = 50;
+        $(".show-read-more").each(function() {
+            var myStr = $(this).text();
+            if ($.trim(myStr).length > maxLength) {
+                var newStr = myStr.substring(0, maxLength);
+                var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
+                $(this).empty().html(newStr);
+                $(this).append(' <a href="javascript:void(0);" class="read-more">read more...</a>');
+                $(this).append('<span class="more-text">' + removedStr + '</span>');
+            }
+        });
+        $(".read-more").click(function() {
+            $(this).siblings(".more-text").contents().unwrap();
+            $(this).remove();
+        });
+    });
+</script>
+<style type="text/css">
+    .mini-footer {
+        background: #ffffff;
+        text-align: center;
+        padding: 32px 0
+    }
+    
+    .mini-footer p a:hover {
+        color: #34bfa3
+    }
+    
+    @media (max-width:991px) {
+        .footer-menu {
+            padding-left: 0;
+        }
+        .page-container h3{
+        	margin-top: 100px;
+        }
+        .colorlib-navbar-brand img{
+        	transform: scale(3);
+        	margin-left: 50px;
+        }
+        .copyright-text {
+        	margin-right: -50px;
+        	margin-left: -25px; 
+        }
+    }
+    
+    .sidenav {
+        width: 130px;
+        position: fixed;
+        z-index: 1;
+        top: 20px;
+        left: 10px;
+        background: #eee;
+        overflow-x: hidden;
+        padding: 8px 0;
+    }
+    
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #2196F3;
+        display: inline-block;
+    }
+    
+    .sidenav a:hover {
+        color: #064579;
+    }
+    
+    .main {
+        margin-left: 140px;
+        /* Same width as the sidebar + left position in px */
+        font-size: 28px;
+        /* Increased text to enable scrolling */
+        padding: 0px 10px;
+    }
+    
+    @media screen and (max-height: 450px) {
+        .sidenav {
+            padding-top: 15px;
+        }
+        .sidenav a {
+            font-size: 18px;
+        }
+    }
+    
+    .show-read-more .more-text {
+        display: none;
+    }
+    
+    .clamp {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical
+    }
+    
+    .social-buttons {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.5);
+        padding: 20px;
+        padding-bottom: 5px;
+        border-radius: 10px;
+        text-align: center;
+        margin: 20px 10px;
+        /* Helper class to divide the icons */
+    }
+    
+    .social-buttons .social-margin {
+        margin-right: 15px;
+    }
+    
+    .social-buttons a,
+    .social-buttons a:hover,
+    .social-buttons a:focus,
+    .social-buttons a:active {
+        text-decoration: none;
+    }
+    
+    .social-buttons .social-icon {
+        margin-bottom: 15px;
+        box-sizing: border-box;
+        -moz-border-radius: 138px;
+        -webkit-border-radius: 138px;
+        border-radius: 138px;
+        border: 5px solid;
+        text-align: center;
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        line-height: 1px;
+        padding-top: 11px;
+        transition: all 0.5s;
+        /* Facebook Button Styling */
+        /* Twitter Button Styling */
+        /* Google+ Button Styling */
+        /* Linkedin Button Styling */
+        /* Pinterest Button Styling */
+        /* Behance Button Styling */
+        /* Github Button Styling */
+        /* Youtube Button Styling */
+        /* Soundcloud Button Styling */
+    }
+    
+    .social-buttons .social-icon:hover {
+        transform: rotate(360deg) scale(1.3);
+    }
+    
+    .social-buttons .social-icon.facebook {
+        font-size: 22px;
+        padding-top: 9px;
+        border-color: #3b5998;
+        background-color: #3b5998;
+        color: #ffffff;
+    }
+    
+    .social-buttons .social-icon.facebook:hover {
+        background-color: #ffffff;
+        color: #3b5998;
+    }
+    
+    .social-buttons .social-icon.linkedin {
+        font-size: 24px;
+        padding-top: 8px;
+        padding-left: 1px;
+        background-color: #0976b4;
+        color: #ffffff;
+        border-color: #0976b4;
+    }
+    
+    .social-buttons .social-icon.linkedin:hover {
+        background-color: #ffffff;
+        color: #0976b4;
+    }
+    
+    .social-buttons .social-icon.instagram {
+        font-size: 22px;
+        padding-top: 9px;
+        background-color: #cb2027;
+        color: #ffffff;
+        border-color: #cb2027;
+    }
+    
+    .social-buttons .social-icon.instagram:hover {
+        background-color: #ffffff;
+        color: #cb2027;
+    }
+    
+    .social-buttons .social-icon.medium {
+        font-size: 22px;
+        padding-top: 9px;
+        background-color: #cb2027;
+        color: #ffffff;
+        border-color: #cb2027;
+    }
+    
+    .social-buttons .social-icon.medium:hover {
+        background-color: #ffffff;
+        color: #cb2027;
+    }
+</style>
+
+<body>
+
+    <nav id="colorlib-main-nav" role="navigation">
+        <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle active"><i></i></a>
+        <div class="js-fullheight colorlib-table">
+            <div class="colorlib-table-cell js-fullheight">
+                <div class="row d-flex justify-content-end">
+                    <div class="col-md-12 px-5">
+                        <ul class="mb-5">
+                            <li class="active"><a href="index.html"><span>Home</span></a></li>
+                            <li><a href="about2.html"><span>About</span></a></li>
+                            <li><a href="contact.html"><span>Contact US</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="col px-5 copyright">
+                        <p>Powered By Planit</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="colorlib-page">
+        <header>
+            <div class="container-fluid">
+                <div class="row no-gutters">
+                    <div class="col-md-12">
+                        <div class="colorlib-navbar-brand">
+                            <img src="images/planit.png" class="img-fluid" alt="Responsive image" style="width:40%;" class="w3-round"><br><br>
+                        </div>
+                        <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="ftco-fixed clearfix">
+            <div class="image js-fullheight float-left">
+                <div class="home-slider owl-carousel js-fullheight">
+                    <div class="slider-item js-fullheight" style="background-image: url('images/event1.jpg');">
+                        <div class="overlay"></div>
+                        <div class="container">
+                            <div class="row slider-text align-items-end" data-scrollax-parent="true">
+                                <div class="col-md-10 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                                    <p class="cat"><span>Planit crew</span></p>
+                                    <h1 class="mb-3" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"></h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slider-item js-fullheight" style="background-image: url('images/event2.jpg');">
+                        <div class="overlay"></div>
+                        <div class="container">
+                            <div class="row slider-text align-items-end" data-scrollax-parent="true">
+                                <div class="col-md-10 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                                    <p class="cat"><span></span></p>
+                                    <h1 class="mb-3" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"></h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slider-item js-fullheight" style="background-image: url('images/event3.jpg');">
+                        <div class="overlay"></div>
+                        <div class="container">
+                            <div class="row slider-text align-items-end" data-scrollax-parent="true">
+                                <div class="col-md-10 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                                    <p class="cat"><span></span></p>
+                                    <h1 class="mb-3" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"></h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slider-item js-fullheight" style="background-image: url('images/event4.jpg');">
+                        <div class="overlay"></div>
+                        <div class="container">
+                            <div class="row slider-text align-items-end" data-scrollax-parent="true">
+                                <div class="col-md-10 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                                    <p class="cat"><span></span></p>
+                                    <h1 class="mb-3" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"></h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+            <div class="page-container float-right">
+                <h3>Upcoming Events</h3><br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="blog-entry ftco-animate">
+                            <a href="Art of Living.html" class="blog-image">
+                                <img src="images/art.jpg" class="img-fluid" alt="">
+                            </a>
+                            <div class="text py-4">
+                                <div class="meta">
+                                    <div><a href="#">Sunday,Oct 16 2022</a></div>
+                                    <div><a href="#">Bangalore's creative space</a></div>
+                                </div>
+                                <h3 class="heading"><a href="Art of Living.html">Art of Living</a></h3>
+                                <p>The term "art of living"refers to capabilitis for leading a good life.Since there are different views on what a good life is,there could also be a difference in the capabilites called for</p>
+                            </div>
+                        </div>
+                        <div class="blog-entry ftco-animate">
+                            <a href="Concert.html" class="blog-image">
+                                <img src="images/concert.jpg" class="img-fluid" alt="">
+                            </a>
+                            <div class="text py-4">
+                                <div class="meta">
+                                    <div><a href="#">Saturday,Oct 22 2022</a></div>
+                                    <div><a href="#">Bangalore's creative space</a></div>
+                                </div>
+                                <h3 class="heading"><a href="Concert.html">Concert</a></h3>
+                                <p>The Raghu Dixit Project is a contemporary Indian folk band based in Bangalore, India. We play our unique brand of contemporary folk music in Kannada</p>
+                            </div>
+                        </div>
+                        <div class="blog-entry ftco-animate">
+                            <a href="Dance.html" class="blog-image">
+                                <img src="images/garba.jpg" class="img-fluid" alt="">
+                            </a>
+                            <div class="text py-4">
+                                <div class="meta">
+                                    <div><a href="#">18th Sept-2 Oct 2022</a></div>
+                                    <div><a href="#">Bangalore's creative space</a></div>
+                                </div>
+                                <h3 class="heading"><a href="Dance.html">Garba night</a></h3>
+                                <p class="show-read-more">Garba is a Gujarati folk dance celebrated in Navratri, a celebration lasting nine nights. Garba songs typically revolve around the subjects of the nine goddesses. Garba styles vary from place to place in Gujarat.</p>
+                            </div>
+                        </div>
+                        <div class="blog-entry ftco-animate">
+                            <a href="Workshop.html" class="blog-image">
+                                <img src="images/micro.jpg" class="img-fluid" alt="">
+                            </a>
+                            <div class="text py-4">
+                                <div class="meta">
+                                    <div><a href="#">Sunday,18 Sept 2022</a></div>
+                                    <div><a href="#">eMexo Technologies,E-city</a></div>
+                                </div>
+                                <h3 class="heading"><a href="Workshop.html">Microsoft workshops</a></h3>
+                                <p class="show-read-more">Attending our specially designed Microsoft Azure training courses will help learners become skilled at using Azure to design, manage, and administer cloud-based business solutions and attain their desired job profile in prominent organisations.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="blog-entry ftco-animate">
+                            <a href="pottery.html" class="blog-image">
+                                <img src="images/pottery.jpg" class="img-fluid" alt="">
+                            </a>
+                            <div class="text py-4">
+                                <div class="meta">
+                                    <div><a href="#">September 15th-30th, 2022</a></div>
+                                    <div><a href="#">Lahe Lahe,Bengaluru</a></div>
+                                </div>
+                                <h3 class="heading"><a href="pottery.html">Pottery</a></h3>
+                                <p class="show-read-more">Pottery is the process and the products of forming vessels and other objects with clay and other ceramic materials, which are fired at high temperatures to give them a hard and durable form</p>
+                            </div>
+                        </div>
+                        <div class="blog-entry ftco-animate">
+                            <a href="marathon.html" class="blog-image">
+                                <img src="images/marathon.jpg" class="img-fluid" alt="">
+                            </a>
+                            <div class="text py-4">
+                                <div class="meta">
+                                    <div><a href="#">18 Sept 2022</a></div>
+                                    <div><a href="#">Bengaluru,India</a></div>
+                                </div>
+                                <h3 class="heading"><a href="marathon.html">Marathon</a></h3>
+                                <p class="show-read-more"> 
+                                    The marathon is a long-distance foot race with a distance of 42.195 kilometres, usually run as a road race, but the distance can be covered on trail routes. The marathon can be completed by running or with a run/walk strategy</p>
+                            </div>
+                        </div>
+                        <div class="blog-entry ftco-animate">
+                            <a href="ai.html" class="blog-image">
+                                <img src="images/ai.jpg" class="img-fluid" alt="">
+                            </a>
+                            <div class="text py-4">
+                                <div class="meta">
+                                    <div><a href="#">October 21, 2020</a></div>
+                                    <div><a href="#">Online</a></div>
+                                </div>
+                                <h3 class="heading"><a href="#">Webinar On AI&ML</a></h3>
+                                <p>The goal is to learn from data on certain task to maximize the performance of machine on this task. AI is decision making. ML allows system to learn new things from data.</p>
+                            </div>
+                        </div>
+                        <div class="blog-entry ftco-animate">
+                            <a href="Stand Up Comedy.html" class="blog-image">
+                                <img src="images/standup.jpg" class="img-fluid" alt="">
+                            </a>
+                            <div class="text py-4">
+                                <div class="meta">
+                                    <div><a href="#">15 Sept-29 Sept 2022</a></div>
+                                    <div><a href="#">Bistro Claytopia,Kormangala</a></div>
+                                </div>
+                                <h3 class="heading"><a href="Stand Up Comedy.html">Stand Up Comedy</a></h3>
+                                <p class="show-read-more">Stand-up comedy is a comedic performance to a live audience in which the performer addresses the audience directly from the stage.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer -->
+                
+
+
+
+
+
+
+                        </div>
+                        <!-- end: page-container-->
+        </section>
+        <!-- loader -->
+        <div id="ftco-loader" class="show fullscreen">
+            <svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg>
+        </div>
+        </div>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.easing.1.3.js"></script>
+        <script src="js/jquery.waypoints.min.js"></script>
+        <script src="js/jquery.stellar.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <script src="js/aos.js"></script>
+        <script src="js/jquery.animateNumber.min.js"></script>
+        <script src="js/scrollax.min.js"></script>
+        <script src="js/bootstrap-datepicker.js"></script>
+        <script src="js/jquery.timepicker.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+        <script src="js/google-map.js"></script>
+        <script src="js/main.js"></script>
+
+</body>
+
+</html>
